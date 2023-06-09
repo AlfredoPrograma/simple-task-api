@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import { errorHandler, notFoundHandler } from '@/middlewares/exceptionsHandlers';
-import { applyGraphqlMiddleware } from './config/graphql/server';
+import { applyGraphqlMiddleware } from '@/graphql/server';
 
 function loadEnv() {
   config();

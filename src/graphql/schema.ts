@@ -1,7 +1,7 @@
 import { makeSchema } from 'nexus';
 import path from 'path';
 
-import * as types from './types';
+import * as types from './resources';
 
 export const schema = makeSchema({
   types,
