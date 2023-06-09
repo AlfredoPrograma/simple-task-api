@@ -1,8 +1,4 @@
-import { initEnv } from '@/config/env';
-import { runServerAndListen } from '@/config/server';
+import { runServerAndListen } from './app';
 
-import app from './app';
-
-initEnv();
-runServerAndListen(app);
+runServerAndListen();
 
