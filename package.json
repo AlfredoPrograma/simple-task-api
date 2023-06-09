@@ -7,7 +7,7 @@
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "dev": "nodemon -r tsconfig-paths/register src/index.ts",
     "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "generate": "ts-node --transpile-only src/config/graphql/schema.ts",
+    "generate": "ts-node -r tsconfig-paths/register --transpile-only src/graphql/schema.ts",
     "lint": "eslint --fix src test",
     "test": "jest",
     "typecheck": "tsc --noEmit"

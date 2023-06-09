@@ -1,7 +1,7 @@
 import { prisma } from '@/database/client';
 import { Prisma } from '@prisma/client';
 
-export async function getAllTasks() {
+export async function getAll() {
   try {
     return await prisma.task.findMany();
   } catch (err) {
@@ -9,7 +9,7 @@ export async function getAllTasks() {
   }
 }
 
-export async function createTask(task: Prisma.TaskCreateInput) {
+export async function create(task: Prisma.TaskCreateInput) {
   try {
     return await prisma.task.create({ data: task });
   } catch (err) {
@@ -17,7 +17,7 @@ export async function createTask(task: Prisma.TaskCreateInput) {
   }
 }
 
-export async function updateTask(taskId: number, task: Prisma.TaskUpdateInput) {
+export async function update(taskId: number, task: Prisma.TaskUpdateInput) {
   try {
     return await prisma.task.update({ where: { id: taskId }, data: task });
   } catch (err) {
@@ -25,7 +25,7 @@ export async function updateTask(taskId: number, task: Prisma.TaskUpdateInput) {
   }
 }
 
-export async function deleteTask(taskId: number) {
+export async function remove(taskId: number) {
   try {
     return await prisma.task.delete({ where: { id: taskId } });
   } catch (err) {

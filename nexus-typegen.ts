@@ -28,6 +28,7 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
   Query: {};
   Task: { // root type
     completed: boolean; // Boolean!
@@ -48,8 +49,13 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    createTask: NexusGenRootTypes['Task'] | null; // Task
+    removeTask: NexusGenRootTypes['Task'] | null; // Task
+    updateTask: NexusGenRootTypes['Task'] | null; // Task
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    getAllTasks: Array<NexusGenRootTypes['Task'] | null>; // [Task]!
   }
   Task: { // field return type
     completed: boolean; // Boolean!
@@ -60,8 +66,13 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    createTask: 'Task'
+    removeTask: 'Task'
+    updateTask: 'Task'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    getAllTasks: 'Task'
   }
   Task: { // field return type name
     completed: 'Boolean'
@@ -72,6 +83,20 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createTask: { // args
+      description?: string | null; // String
+      title: string; // String!
+    }
+    removeTask: { // args
+      id: number; // Int!
+    }
+    updateTask: { // args
+      description?: string | null; // String
+      id: number; // Int!
+      title: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
