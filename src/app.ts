@@ -6,9 +6,18 @@ import cors from 'cors';
 
 import { errorHandler, notFoundHandler } from '@/middlewares/exceptionsHandlers';
 import { applyGraphqlMiddleware } from '@/graphql/server';
+import { prisma } from '@/database/client';
 
 function loadEnv() {
   config();
+}
+
+async function connectDb() {
+  try {
+    await prisma.$connect();
+  } catch (err) {
+    console.error('Error connecting to database: ', err);
+  }
 }
 
 async function loadMiddlewares(app: Application) {
@@ -27,6 +36,7 @@ function loadExceptionHandlers(app: Application) {
 
 export async function runServerAndListen() {
   loadEnv();
+  connectDb();
 
   const port = process.env.PORT || 5000;
   const app = express();
