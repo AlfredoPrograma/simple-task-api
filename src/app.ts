@@ -5,16 +5,19 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import { errorHandler, notFoundHandler } from '@/middlewares/exceptionsHandlers';
+import { applyGraphqlMiddleware } from './config/graphql/server';
 
 function loadEnv() {
   config();
 }
 
-function loadMiddlewares(app: Application) {
+async function loadMiddlewares(app: Application) {
   app.use(morgan('dev'));
-  app.use(helmet());
+  app.use(helmet({ contentSecurityPolicy: false }));
   app.use(cors());
   app.use(express.json());
+
+  await applyGraphqlMiddleware(app);
 }
 
 function loadExceptionHandlers(app: Application) {
@@ -22,13 +25,13 @@ function loadExceptionHandlers(app: Application) {
   app.use(errorHandler);
 }
 
-export function runServerAndListen() {
+export async function runServerAndListen() {
   loadEnv();
 
   const port = process.env.PORT || 5000;
   const app = express();
 
-  loadMiddlewares(app);
+  await loadMiddlewares(app);
 
   // TODO: Load routes here
 
