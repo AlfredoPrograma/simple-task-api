@@ -5,3 +5,10 @@
 type Query {
   ok: Boolean!
 }
+
+type Task {
+  completed: Boolean!
+  description: String
+  id: Int!
+  title: String!
+}
