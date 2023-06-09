@@ -1,7 +1,7 @@
 {
-  "name": "express-api-starter-ts",
+  "name": "simple-task-api",
   "version": "1.2.0",
-  "description": " A basic starter for an express.js API with Typescript",
+  "description": "API for SimpleTask web app",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
@@ -11,12 +11,7 @@
     "test": "jest",
     "typecheck": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/w3cj/express-api-starter.git"
-  },
+  "author": "Alfredo Arvelaez. @AlfredoPrograma",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
