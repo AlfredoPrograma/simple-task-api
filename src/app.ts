@@ -5,8 +5,6 @@ import cors from 'cors';
 
 import * as middlewares from '@/middlewares';
 
-require('dotenv').config();
-
 const app = express();
 
 app.use(morgan('dev'));
@@ -14,9 +12,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-
 app.get('/', (req, res) => { res.send('hello');});
-
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
