@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  database:
+    container_name: "simple-app-db"
+    image: "postgres:15.2-alpine"
+    env_file:
+      - .env
+    volumes:
+      - ".docker/database:/var/lib/postgresql/data"
+    ports:
+      - "${POSTGRES_BIND_PORT}:5432"
