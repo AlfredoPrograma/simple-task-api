@@ -18,11 +18,14 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_HOST=database
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}
+    entrypoint: "/bin/sh init.sh"
     ports:
       - "${PORT}:${PORT}"
+
     depends_on:
       - database
+
 networks:
   default:
     driver: bridge

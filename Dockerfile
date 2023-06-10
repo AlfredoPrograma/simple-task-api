@@ -4,8 +4,6 @@ WORKDIR /usr/app
 
 COPY . .
 
-RUN npm install
+RUN npm ci
 
 RUN npm run build
-
-CMD ["node", "dist/index.js"]
