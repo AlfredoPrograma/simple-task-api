@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { extendType, intArg, nonNull, objectType, stringArg } from 'nexus';
+import { booleanArg, extendType, intArg, nonNull, objectType, stringArg } from 'nexus';
 import * as tasksService from '@/services/tasks';
 
 export const Task = objectType({
@@ -53,11 +53,12 @@ export const UpdateTaskMutation = extendType({
         id: nonNull(intArg()),
         title: nonNull(stringArg()),
         description: stringArg(),
+        completed: nonNull(booleanArg()),
       },
       resolve: async (_, args) => {
-        const { id, title, description } = args;
+        const { id, title, description, completed } = args;
 
-        return tasksService.update(id, { title, description });
+        return tasksService.update(id, { title, description, completed });
       },
     });
   },

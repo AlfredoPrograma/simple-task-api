@@ -92,6 +92,7 @@ export interface NexusGenArgTypes {
       id: number; // Int!
     }
     updateTask: { // args
+      completed: boolean; // Boolean!
       description?: string | null; // String
       id: number; // Int!
       title: string; // String!
